@@ -1,212 +1,124 @@
-#ifndef MAIN_H
+README.md
 
-#define MAIN_H
 
-#include <stdarg.h>
+0x11. C - printf team project
 
-#include <stdio.h>
 
-#include <unistd.h>
+Group Project:                                                                      
 
+                                                                                   
 
-#define UNUSED(x) (void)(x)
+0. I'm not going anywhere. You can print that wherever you want to. I'm here and I'm
 
-#define BUFF_SIZE 1024
+ a Spur for life                                                                    
 
+Write a function that produces output according to a format.                        
 
-/* FLAGS */
+                                                                                   
 
-#define F_MINUS 1
+                                                                                   
 
-#define F_PLUS 2
+1. Education is when you read the fine print. Experience is what you get if you don'
 
-#define F_ZERO 4
+t                                                                                  
 
-#define F_HASH 8
+Handle the following conversion specifiers:
 
-#define F_SPACE 16
 
+2. With a face like mine, I do better in print                                      
 
-/* SIZES */
+Handle the following custom conversion specifiers:                                  
 
-#define S_LONG 2
+                                                                                   
 
-#define S_SHORT 1
+3. What one has not experienced, one will never understand in print                
 
+Handle the following conversion specifiers:                                        
 
-/**
+                                                                                   
 
- * struct fmt - Struct op
+4. Nothing in fine print is ever good news                                          
 
- *
+Use a local buffer of 1024 chars in order to call write as little as possible.      
 
- * @fmt: The format.
+                                                                                   
 
- * @fn: The function associated.
+5. My weakness is wearing too much leopard print                                    
 
- */
+Handle the following custom conversion specifier:                                  
 
-struct fmt
+                                                                                   
 
-{
+6. How is the world ruled and led to war? Diplomats lie to journalists and believe t
 
-        char fmt;
+hese lies when they see them in print                                              
 
-        int (*fn)(va_list, char[], int, int, int, int);
+Handle the following conversion specifier: p.                                      
 
-};
+                                                                                   
 
+7. The big print gives and the small print takes away                              
 
+Handle the following flag characters for non-custom conversion specifiers:          
 
-/**
+                                                                                   
 
- * typedef struct fmt fmt_t - Struct op
+8. Sarcasm is lost in print                                                        
 
- *
+Handle the following length modifiers for non-custom conversion specifiers:        
 
- * @fmt: The format.
+                                                                                   
 
- * @fm_t: The function associated.
+l                                                                                  
 
- */
+h                                                                                  
 
-typedef struct fmt fmt_t;
+Conversion specifiers to handle: d, i, u, o, x, X                                  
 
+                                                                                   
 
-int _printf(const char *format, ...);
+9. Print some money and give it to us for the rain forests                          
 
-int handle_print(const char *fmt, int *i,
+Handle the field width for non-custom conversion specifiers.                        
 
-va_list list, char buffer[], int flags, int width, int precision, int size);
+                                                                                   
 
+10. The negative is the equivalent of the composer's score, and the print the perfor
 
-/****************** FUNCTIONS ******************/
+mance                                                                              
 
+Handle the precision for non-custom conversion specifiers.                          
 
-/* Funtions to print chars and strings */
+                                                                                   
 
-int print_char(va_list types, char buffer[],
+11. It's depressing when you're still around and your albums are out of print      
 
-        int flags, int width, int precision, int size);
+Handle the 0 flag character for non-custom conversion specifiers.                  
 
-int print_string(va_list types, char buffer[],
+                                                                                   
 
-        int flags, int width, int precision, int size);
+12. Every time that I wanted to give up, if I saw an interesting textile, print what
 
-int print_percent(va_list types, char buffer[],
+ ever, suddenly I would see a collection                                            
 
-        int flags, int width, int precision, int size);
+Handle the - flag character for non-custom conversion specifiers.                  
 
+                                                                                   
 
-/* Functions to print numbers */
+13. Print is the sharpest and the strongest weapon of our party                    
 
-int print_int(va_list types, char buffer[],
+Handle the following custom conversion specifier:                                  
 
-        int flags, int width, int precision, int size);
+                                                                                   
 
-int print_binary(va_list types, char buffer[],
+14. The flood of print has turned reading into a process of gulping rather than savo
 
-        int flags, int width, int precision, int size);
+ring                                                                                
 
-int print_unsigned(va_list types, char buffer[],
+Handle the following custom conversion specifier:                                  
 
-        int flags, int width, int precision, int size);
+                                                                                   
 
-int print_octal(va_list types, char buffer[],
+15. *                                                                              
 
-        int flags, int width, int precision, int size);
-
-int print_hexadecimal(va_list types, char buffer[],
-
-        int flags, int width, int precision, int size);
-
-int print_hexa_upper(va_list types, char buffer[],
-
-        int flags, int width, int precision, int size);
-
-
-int print_hexa(va_list types, char map_to[],
-
-char buffer[], int flags, char flag_ch, int width, int precision, int size);
-
-
-/* Function to print non printable characters */
-
-int print_non_printable(va_list types, char buffer[],
-
-        int flags, int width, int precision, int size);
-
-
-/* Funcion to print memory address */
-
-int print_pointer(va_list types, char buffer[],
-
-        int flags, int width, int precision, int size);
-
-
-/* Funciotns to handle other specifiers */
-
-int get_flags(const char *format, int *i);
-
-int get_width(const char *format, int *i, va_list list);
-
-int get_precision(const char *format, int *i, va_list list);
-
-int get_size(const char *format, int *i);
-
-
-/*Function to print string in reverse*/
-
-int print_reverse(va_list types, char buffer[],
-
-        int flags, int width, int precision, int size);
-
-
-/*Function to print a string in rot 13*/
-
-int print_rot13string(va_list types, char buffer[],
-
-        int flags, int width, int precision, int size);
-
-
-/* width handler */
-
-int handle_write_char(char c, char buffer[],
-
-        int flags, int width, int precision, int size);
-
-int write_number(int is_positive, int ind, char buffer[],
-
-        int flags, int width, int precision, int size);
-
-int write_num(int ind, char bff[], int flags, int width, int precision,
-
-        int length, char padd, char extra_c);
-
-int write_pointer(char buffer[], int ind, int length,
-
-        int width, int flags, char padd, char extra_c, int padd_start);
-
-
-int write_unsgnd(int is_negative, int ind,
-
-char buffer[],
-
-        int flags, int width, int precision, int size);
-
-
-/****************** UTILS ******************/
-
-int is_printable(char);
-
-int append_hexa_code(char, char[], int);
-
-int is_digit(char);
-
-
-long int convert_size_number(long int num, int size);
-
-long int convert_size_unsgnd(unsigned long int num, int size);
-
-
-#endif /* MAIN_H */
+All the above options work well together.
